@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:mongodb="http://www.liquibase.org/xml/ns/mongodb"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+         http://www.liquibase.org/xml/ns/mongodb
+         http://www.liquibase.org/xml/ns/mongodb/liquibase-mongodb-latest.xsd">
+
+    <preConditions onFail="WARN" onFailMessage="Collection juegos is not empty">
+        <mongodb:expectedDocumentCount collectionName="juegos" expectedCount="0"/>
+    </preConditions>
+
+    <changeSet id="1" author="hailey" labels="insertSampleJuegos">
+        <comment>Insert initial juegos</comment>
+
+        <mongodb:insertOne collectionName="juegos">
+            <mongodb:document>
+                {
+                "nombre": "Gaylorant",
+                "genero": "Aventura",
+                "plataforma": "Nintendo Switch",
+                "precio": 59.99,
+                "stock": 10,
+                "imagen": "https://upload.wikimedia.org/wikipedia/en/b/ba/Valorant_cover.jpg"
+                }
+            </mongodb:document>
+        </mongodb:insertOne>
+
+        <mongodb:insertOne collectionName="juegos">
+            <mongodb:document>
+                {
+                "nombre": "CS GO",
+                "genero": "Sandbox",
+                "plataforma": "PC",
+                "precio": 26.95,
+                "stock": 50,
+                "imagen": "https://upload.wikimedia.org/wikipedia/en/6/6e/CSGOcoverMarch2020.jpg"
+                }
+            </mongodb:document>
+        </mongodb:insertOne>
+
+        <mongodb:insertOne collectionName="juegos">
+            <mongodb:document>
+                {
+                "nombre": "GTA 6",
+                "genero": "Acción",
+                "plataforma": "PlayStation",
+                "precio": 49.99,
+                "stock": 20,
+                "imagen": "https://upload.wikimedia.org/wikipedia/en/4/46/Grand_Theft_Auto_VI.png"
+                }
+            </mongodb:document>
+        </mongodb:insertOne>
+    </changeSet>
+</databaseChangeLog>

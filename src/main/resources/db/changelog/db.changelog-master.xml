@@ -2,54 +2,10 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:mongodb="http://www.liquibase.org/xml/ns/mongodb"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-      http://www.liquibase.org/xml/ns/mongodb
-      http://www.liquibase.org/xml/ns/mongodb/liquibase-mongodb-latest.xsd">
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="1" author="hailey" labels="createJuegos" context="init">
-        <comment>Create 'juegos' collection</comment>
-        <mongodb:createCollection collectionName="juegos"/>
-    </changeSet>
+    <include file="db.changelog-create-collections.xml" relativeToChangelogFile="true"/>
+    <include file="db.changelog-insert-games.xml" relativeToChangelogFile="true"/>
 
-    <changeSet id="2" author="hailey" labels="insertSampleJuegos" context="init">
-        <comment>Insert initial juegos</comment>
-
-        <mongodb:insert collectionName="juegos">
-            <mongodb:document>
-                {
-                "nombre": "The Legend of Zelda",
-                "genero": "Aventura",
-                "plataforma": "Switch",
-                "precio": 59.99,
-                "stock": 10
-                }
-            </mongodb:document>
-        </mongodb:insert>
-
-        <mongodb:insert collectionName="juegos">
-            <mongodb:document>
-                {
-                "nombre": "Minecraft",
-                "genero": "Sandbox",
-                "plataforma": "PC",
-                "precio": 26.95,
-                "stock": 50
-                }
-            </mongodb:document>
-        </mongodb:insert>
-
-        <mongodb:insert collectionName="juegos">
-            <mongodb:document>
-                {
-                "nombre": "God of War",
-                "genero": "Acción",
-                "plataforma": "PlayStation",
-                "precio": 49.99,
-                "stock": 20
-                }
-            </mongodb:document>
-        </mongodb:insert>
-    </changeSet>
 </databaseChangeLog>
